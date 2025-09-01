@@ -4,13 +4,13 @@ import { ActivityIndicator, Modal, Pressable, StyleSheet, View } from "react-nat
 import StyledText from "../StyledText";
 import StyledButton from "../button/StyledButton";
 import {
-    MessageIconNameType,
-    MessageModalProps,
-    MessageThemeColorType,
-    MessageTypes
+  MessageIconNameType,
+  MessageModalProps,
+  MessageThemeColorType,
+  MessageTypes
 } from "./types";
 const MessageModal = ({
-    messageModalVisible,
+  messageModalVisible ,
   messageType,
   headerText,
   messageText,
@@ -20,7 +20,7 @@ const MessageModal = ({
   onConfirm,
   onReject = () => {},
   isLoading,
-  isProceeding,
+  isConfirming,
   isRejecting
 } : MessageModalProps) => {
   let messageIconNameType: MessageIconNameType,
@@ -32,11 +32,11 @@ const MessageModal = ({
       messageThemeColorType = appColors.fail;
       break;
     case MessageTypes.SUCCESS:
-      messageIconNameType = "check-circle";
+      messageIconNameType = "check";
       messageThemeColorType = appColors.success;
       break;
     case MessageTypes.INFO:
-      messageIconNameType = "information";
+      messageIconNameType = "information-variant";
       messageThemeColorType = appColors.info;
       break;
     case MessageTypes.WARNING:
@@ -57,8 +57,8 @@ const MessageModal = ({
       break;
   }
   return (
-    <Modal animationType="slide" visible={true} 
-    transparent={ messageModalVisible}>
+    <Modal animationType="slide" visible={messageModalVisible} 
+    transparent={ true }>
       <Pressable onPress={onDismiss} style={styles.container}>
 
         {isLoading && <ActivityIndicator size={70} color={appColors.white} />}
@@ -111,7 +111,7 @@ const MessageModal = ({
                     { backgroundColor: messageThemeColorType },
                   ]}
                   onPress={onConfirm}
-                  isLoading={isProceeding}
+                  isLoading={isConfirming}
                 >
                   {buttonText || (
                     <>
@@ -129,7 +129,7 @@ const MessageModal = ({
               <StyledButton
                 style={{ backgroundColor: messageThemeColorType }}
                 onPress={onConfirm}
-                isLoading={isProceeding}
+                isLoading={isConfirming}
               >
                 {buttonText || "Okay"}
               </StyledButton>

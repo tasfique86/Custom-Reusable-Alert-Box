@@ -19,12 +19,12 @@ export type MessageModalProps = {
   messageType: MessageTypes;
   headerText: string;
   messageText: string;
-  buttonText: string;
-  altButtonText: string;
+  buttonText?: string;
+  altButtonText?: string;
   onDismiss: () => any;
   onConfirm: () => any;
   onReject?: () => any;
   isLoading?: boolean;
-  isProceeding?: boolean;
+  isConfirming?: boolean;
   isRejecting?: boolean;
 };
